@@ -27,7 +27,7 @@ bindsym XF86AudioMute $exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $refres
 bindsym XF86AudioMicMute $exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 #Styling
-default_border pixel 0disable
+default_border pixel 0
 default_floating_border pixel 0
 gaps inner 5px
 
