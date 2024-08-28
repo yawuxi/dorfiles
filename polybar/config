@@ -37,45 +37,24 @@ module-margin = 1
 separator-foreground = ${colors.disabled}
 font-0 = JetBrainsMono;4
 modules-left = xworkspaces xwindow
-modules-right = tray pulseaudio-control-output pulseaudio-control-input xkeyboard i3 date
+modules-right = tray pulseaudio-control-output pulseaudio-control-input xkeyboard wired-network i3 date
 cursor-click = pointer
 cursor-scroll = ns-resize
 enable-ipc = true
 
-[module/i3]
-type = internal/i3
-format = <label-mode>
-label-mode-padding = 3
-label-mode-background = ${colors.foreground}
-label-mode-foreground = ${colors.background}
-
-[module/tray]
-type = internal/tray
-format = <tray>
-tray-spacing = 5
-
+;Modules left
 [module/xworkspaces]
 type = internal/xworkspaces
-
-label-active = %name%
-label-active-background = ${colors.background-alt}
-label-active-underline= ${colors.foreground}
-label-active-padding = 1
-
-label-occupied = %name%
-label-occupied-padding = 1
-
-label-urgent = %name%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 1
-
-label-empty = %name%
-label-empty-foreground = ${colors.disabled}
-label-empty-padding = 1
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:60:...%
+
+;Modules Right
+[module/tray]
+type = internal/tray
+format = <tray>
+tray-spacing = 5
 
 [module/pulseaudio-control-output]
 type = custom/script
@@ -105,6 +84,22 @@ click-middle = pulseaudio-control --node-type input next-node
 scroll-up = pulseaudio-control --node-type input --volume-max 130 up
 scroll-down = pulseaudio-control --node-type input --volume-max 130 down
 
+label-active = %name%
+label-active-background = ${colors.background-alt}
+label-active-underline= ${colors.foreground}
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.disabled}
+label-empty-padding = 1
+
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -115,6 +110,31 @@ label-layout-foreground = ${colors.foreground}
 layout-icon-0 = us;US
 layout-icon-1 = ru;RU
 layout-icon-2 = ua;UA
+
+[module/wired-network]
+type = internal/network
+interface = enp0s31f6
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected = ENTHERNET %netspeed%
+label-connected-padding = 2
+label-connected-background = ${colors.foreground}
+label-connected-foreground = ${colors.background}
+
+label-disconnected = ETHERNET DISCONNECTED
+label-disconnected-padding = 2
+label-disconnected-background = ${colors.disabled}
+label-disconnected-foreground = ${colors.foreground}
+
+
+[module/i3]
+type = internal/i3
+format = <label-mode>
+label-mode-padding = 3
+label-mode-background = ${colors.foreground}
+label-mode-foreground = ${colors.background}
 
 [module/date]
 type = internal/date
